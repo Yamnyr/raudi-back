@@ -14,6 +14,10 @@ const Modele = sequelize.define('modele', {
         unique: false,
         allowNull: false
     },
+    prix: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
     nbr_porte: {
         type: DataTypes.INTEGER,
         allowNull: false

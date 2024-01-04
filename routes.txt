@@ -1,0 +1,67 @@
+
+/
+-> Récupère tous les modeles + récupère la liste des options de chacune
+http://localhost:8000/modele/getall -> récupère tous les modèles
+http://localhost:8000/options/modele/:id -> récupère toutes les options du modele sélectionné
+(tous les utilisateurs ont accès à cette route)
+
+
+/commande/historique
+-> récupère la liste de toutes les commandes + compte rendu du gain total par mois
+(il y a toutes les infos dans la table commande)
+http://localhost:8000/commande/historique
+(seul le comptable a accès à cette route)
+
+
+/commande/new
+-> créer une nouvelle commande
+http://localhost:8000/modele/getOne/:id -> récupère les infos du modele sélectionné
+http://localhost:8000/modele/getoption/:id -> récupère la liste des options disponibles pour le modele sélectionné
+
+l'utilisateur a un formulaire avec la liste des options du modele sélectionné et peut cocher ou non celui qu'il souhaite,
+avec le prix total mis ajour (pris du modele + pris de chaque option sélectionné
+
+http://localhost:8000/commande/add
+    -> avec comme paramètre
+    id_utilisateur
+    id_modele
+    liste option (objet json)
+    montant total
+(seuls les utilisateurs connecté ont accès à cette route)
+
+
+/modele/add
+-> créer un nouveau modele
+http://localhost:8000/option/gatall/:id -> récupère toutes les options
+l'admin peut renseigner toutes les informations relatives au modele
++ il choisit les options parmi les options existantes
+
+http://localhost:8000/modele/add/ -> créer le nouveau modele
+    -> avec comme paramètre
+    nom
+    nbr_porte
+    moteur
+    taille
+    nbr_place
+    + objet json contenant les options
+(seul l"admin a accès à cette route)
+
+
+
+/login
+http://localhost:8000/utilisateur/login
+    -> avec comme paramètre
+    email
+    mdp
+
+/register
+http://localhost:8000/utilisateur/register
+    -> avec comme paramètre
+    nom
+    prenom
+    email
+    mdp
+
+
+
+3 role: user, comptable, admin

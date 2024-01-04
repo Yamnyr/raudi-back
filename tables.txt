@@ -1,0 +1,34 @@
+modele:
+	id
+	nom
+	prix
+	nbr_porte
+	moteur
+	taille
+	nbr_place
+
+utilisateur:
+	id
+	nom
+	prenom
+	email
+	mdp
+	role
+
+options:
+	id
+	nom
+	prix
+
+commande:
+	id
+	id_client
+	id_modele
+	liste_options (objet json)
+	montant total
+
+
+model_options:
+	id
+	id_modele
+	id_option
