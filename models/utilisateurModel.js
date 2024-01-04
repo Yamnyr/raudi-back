@@ -1,0 +1,42 @@
+const sequelize = require('../database/database');
+const { DataTypes } = require('sequelize');
+
+const Utilisateur = sequelize.define('utilisateur', {
+    id: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        primaryKey: true,
+        allowNull: false,
+    },
+    nom: {
+        type: DataTypes.STRING,
+        unique: false,
+        allowNull: true
+    },
+    prenom: {
+        type: DataTypes.STRING,
+        unique: false,
+        allowNull: true
+    },
+    email: {
+        type: DataTypes.STRING,
+        unique: true,
+        allowNull: false
+    },
+    mdp: {
+        type: DataTypes.STRING,
+        unique: false,
+        allowNull: true
+    },
+    role: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+}, {
+    sequelize,
+    freezeTableName: true
+});
+
+//RELATION ICI:
+
+module.exports = Utilisateur;

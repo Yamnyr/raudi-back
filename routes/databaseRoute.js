@@ -3,5 +3,6 @@ const route = express.Router()
 const databaseController = require('../controllers/databaseController')
 
 route.get('/createAllTable', databaseController.createAllTable)
+route.get('/createTableModele', databaseController.createTableModele)
 
 module.exports = route
