@@ -2,7 +2,7 @@ const Option = require('../models/optionModel')
 
 
 // (POST)
-// http://localhost:8000/option/new
+// http://localhost:8000/option/add
 // {
 //     "nom": "clim",
 //     "prix": "100"

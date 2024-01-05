@@ -2,7 +2,7 @@ const Commande = require('../models/commandeModel')
 
 
 // (POST)
-// http://localhost:8000/commande/new
+// http://localhost:8000/commande/add
 // {
 //     "montant_total": "2",
 //     "liste_options": "test",
