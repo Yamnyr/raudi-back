@@ -3,7 +3,7 @@ const Modele = require('../models/modeleModel')
 exports.AddModele = async(req,res)=>{
     let modele = req.body
     let result = await Modele.create(modele)
-    res.status(201).json(result.codeEtagere)
+    res.status(201).json(result.id)
 }
 
 exports.AllModele= async(req, res)=>{
