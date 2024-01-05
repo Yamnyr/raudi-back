@@ -19,5 +19,3 @@ app.use('/commande', commandeRoute)
 app.listen(8000, ()=>{
     console.log("serveur lancé sur le port 8000");
 })
-
-
