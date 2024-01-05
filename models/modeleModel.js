@@ -34,6 +34,10 @@ const Modele = sequelize.define('modele', {
         type: DataTypes.INTEGER,
         allowNull: false
     },
+    img: {
+        type: DataTypes.BLOB,
+        allowNull:true
+    }
 }, {
     sequelize,
     freezeTableName: true
