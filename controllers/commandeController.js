@@ -3,6 +3,12 @@ const Commande = require('../models/commandeModel')
 
 // (POST)
 // http://localhost:8000/commande/new
+// {
+//     "montant_total": "2",
+//     "liste_options": "test",
+//     "id_utilisateur": "02f785fb-bc01-41c1-975f-b828da5e4f05",
+//     "id_modele": "29c600cf-784b-424d-99d4-240a04e2ce97"
+// }
 exports.AddCommande = async(req,res)=>{
     let commande = req.body
     let result = await Commande.create(commande)
