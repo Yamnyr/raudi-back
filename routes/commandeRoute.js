@@ -4,6 +4,6 @@ const commandeController = require('../controllers/commandeController')
 
 route.post('/new', commandeController.AddCommande)
 route.get('/historique', commandeController.AllCommande)
-route.get('/historique/:id', commandeController.AllCommande)
+route.get('/historique/:id', commandeController.OneCommande)
 
 module.exports = route
