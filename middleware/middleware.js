@@ -4,7 +4,7 @@ require('dotenv').config()
 
 exports.authenticator = (req, res, next)=>{
     const token = req.params.token ? req.params.token : req.headers.authorization
-
+    console.log(token)
     if (token && process.env.SECRET_KEY){
         jwt.verify(token, process.env.SECRET_KEY, (err, decoded) =>{
             if(err){
@@ -22,7 +22,7 @@ exports.authenticator = (req, res, next)=>{
 
 exports.isAdmin = (req, res, next) => {
     const token = req.params.token ? req.params.token : req.headers.authorization;
-
+    console.log(token)
     if (token && process.env.SECRET_KEY) {
         jwt.verify(token, process.env.SECRET_KEY, async (err, decoded) => {
             if (err) {
@@ -46,8 +46,8 @@ exports.isAdmin = (req, res, next) => {
 
 
 exports.iscomptables = (req, res, next)=>{
-    const token = req.params.token ? req.params.token : req.headers.authorization
-
+    const token = req.params.token ? req.params.token : req.headers.authorization;
+    console.log(token)
     if (token && process.env.SECRET_KEY){
         jwt.verify(token, process.env.SECRET_KEY, async (err, decoded) =>{
             if(err){

@@ -65,3 +65,19 @@ http://localhost:8000/utilisateur/register
 
 
 3 role: user, comptable, admin
+
+
+
+ajouter images dans modele
+l'affiche sur le front
+
+
+/
+/details
+/login
+/register
+
+
+/commande/historique
+/commande/new
+/modele/add

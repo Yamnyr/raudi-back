@@ -34,6 +34,7 @@ const Modele = sequelize.define('modele', {
         type: DataTypes.INTEGER,
         allowNull: false
     },
+
 }, {
     sequelize,
     freezeTableName: true

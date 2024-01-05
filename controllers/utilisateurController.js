@@ -14,9 +14,18 @@ require('dotenv').config();
 //     "role":1
 // }
 exports.AddUtilisateur = async(req,res)=>{
-    let utilisateur = req.body
-    let result = await Utilisateur.create(utilisateur)
-    res.status(201).json(result.id)
+    const {nom, prenom, email, mdp, role} = req.body;
+    const hashMDP = await bcrypt.hash(mdp, 10);
+
+    await Utilisateur.create({
+        nom: nom,
+        prenom: prenom,
+        email: email,
+        mdp: hashMDP,
+        role: role
+    });
+    const token = jwt.sign({email}, process.env.SECRET_KEY, {expiresIn: '1h'});
+    res.json({token});
 }
 
 // (GET)
