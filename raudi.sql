@@ -19,8 +19,7 @@ SET time_zone = "+00:00";
 
 
 -- Drop foreign key constraints if they exist
-ALTER TABLE `option_model` DROP FOREIGN KEY IF EXISTS `option_model_ibfk_1`;
-ALTER TABLE `option_model` DROP FOREIGN KEY IF EXISTS `option_model_ibfk_2`;
+
 
 -- Drop the tables if they exist
 DROP TABLE IF EXISTS `commande`;
@@ -77,7 +76,6 @@ CREATE TABLE `modele` (
   `moteur` varchar(255) NOT NULL,
   `taille` int(11) NOT NULL,
   `nbr_place` int(11) NOT NULL,
-  `img` BLOB,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -86,9 +84,9 @@ CREATE TABLE `modele` (
 -- Déchargement des données de la table `modele`
 --
 
-INSERT INTO `modele` (`id`, `nom`, `prix`, `nbr_porte`, `moteur`, `taille`, `nbr_place`, `img`, `createdAt`, `updatedAt`) VALUES
-('29c600cf-784b-424d-99d4-240a04e2ce97', 'test', 20000, 5, 'essence', 2, 5, '../img/RaudiR1.jpg', '2024-01-04 18:42:00', '2024-01-04 18:42:00'),
-('3cbe17be-0f67-444f-8c37-bff7b40c74a1', 'voituremobile', 20000, 5, 'essence', 2, 5, '../img/RaudiR2.jpg', '2024-01-05 09:33:32', '2024-01-05 09:33:32');
+INSERT INTO `modele` (`id`, `nom`, `prix`, `nbr_porte`, `moteur`, `taille`, `nbr_place`, `createdAt`, `updatedAt`) VALUES
+('29c600cf-784b-424d-99d4-240a04e2ce97', 'test', 20000, 5, 'essence', 2, 5, '2024-01-04 18:42:00', '2024-01-04 18:42:00'),
+('3cbe17be-0f67-444f-8c37-bff7b40c74a1', 'voituremobile', 20000, 5, 'essence', 2, 5, '2024-01-05 09:33:32', '2024-01-05 09:33:32');
 
 -- --------------------------------------------------------
 

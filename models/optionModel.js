@@ -3,8 +3,8 @@ const { DataTypes} = require('sequelize');
 
 const Option = sequelize.define('option', {
     id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
         primaryKey: true,
         allowNull: false,
     },

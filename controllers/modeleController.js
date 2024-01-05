@@ -11,7 +11,7 @@ const db = require('../database/database');
 //     "moteur": "essence",
 //     "taille": "2cm",
 //     "nbr_place": 5,
-//     "img":"../img/RaudiR1.jpg"
+//     "img":"./img/RaudiR1.jpg"
 //     "liste_options": ["1b278310-6aa3-463e-91f4-9f7622dd6302", "b963d77e-6a99-43ad-836f-0406af603167"]
 // }
 

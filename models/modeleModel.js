@@ -4,8 +4,8 @@ const Option = require('./optionModel');
 
 const Modele = sequelize.define('modele', {
     id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
         primaryKey: true,
         allowNull: false,
     },
@@ -35,7 +35,7 @@ const Modele = sequelize.define('modele', {
         allowNull: false
     },
     img: {
-        type: DataTypes.BLOB,
+        type: DataTypes.STRING,
         allowNull:true
     }
 }, {
