@@ -3,8 +3,6 @@ const Commande = require('../models/commandeModel')
 exports.AddCommande = async(req,res)=>{
     let commande = req.body
     let result = await Commande.create(commande)
-    result.id = "commande n°" + req.params.id
-    result.save()
     res.status(201).json(result.id)
 }
 
