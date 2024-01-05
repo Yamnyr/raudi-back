@@ -2,7 +2,7 @@
 /
 -> Récupère tous les modeles + récupère la liste des options de chacune
 http://localhost:8000/modele/getall -> récupère tous les modèles
-http://localhost:8000/options/modele/:id -> récupère toutes les options du modele sélectionné
+http://localhost:8000/modele/getoption/:id -> récupère toutes les options du modele sélectionné
 (tous les utilisateurs ont accès à cette route)
 
 
