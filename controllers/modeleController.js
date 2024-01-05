@@ -1,4 +1,6 @@
-const Modele = require('../models/modeleModel')
+const Modele = require('../models/modeleModel');
+const Option = require('../models/optionModel');
+const db = require('../database/database');
 
 // (POST)
 // http://localhost:8000/modele/add
@@ -10,11 +12,46 @@ const Modele = require('../models/modeleModel')
 //     "taille":"2cm",
 //     "nbr_place":5
 // }
-exports.AddModele = async(req,res)=>{
-    let modele = req.body
-    let result = await Modele.create(modele)
-    res.status(201).json(result.id)
-}
+// exports.AddModele = async(req,res)=>{
+//     let modele = req.body
+//     let result = await Modele.create(modele)
+//     res.status(201).json(result.id)
+// }
+
+exports.AddModele = async (req, res) => {
+    try {
+        const modeleData = req.body;
+
+        // Create the Modele
+        const createdModele = await Modele.create(modeleData);
+
+        // Associate the Modele with Options
+        const { liste_options } = req.body;
+        if (liste_options && Array.isArray(liste_options) && liste_options.length > 0) {
+            // Check if the Options exist
+            const existingOptions = await Option.findAll({
+                where: {
+                    id: liste_options
+                }
+            });
+
+            // Associate the Modele with existing Options, avoiding duplicates
+            await Promise.all(existingOptions.map(async (option) => {
+                const hasAssociation = await createdModele.hasOption(option);
+                if (!hasAssociation) {
+                    await createdModele.addOption(option);
+                }
+            }));
+        }
+
+        res.status(201).json(createdModele.id);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Erreur lors de la requête" });
+    }
+};
+
+
 
 // (GET)
 // http://localhost:8000/modele/getall
