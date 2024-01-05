@@ -1,0 +1,29 @@
+const Option = require('../models/optionModel')
+
+
+// (POST)
+// http://localhost:8000/option/new
+// {
+//     "nom": "clim",
+//     "prix": "100"
+// }
+exports.AddOption = async(req,res)=>{
+    let option = req.body
+    let result = await Option.create(option)
+    res.status(201).json(result.id)
+}
+
+// (GET)
+// http://localhost:8000/option/historique
+exports.AllOption= async(req, res)=>{
+    const option = await Option.findAll()
+    res.status(200).json(option)
+}
+
+
+// (GET)
+// http://localhost:8000/option/historique/:id
+exports.OneOption= async(req, res)=>{
+    const option = await Option.findByPk(parseInt(req.params.id))
+    res.status(200).json(option)
+}

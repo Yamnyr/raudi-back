@@ -15,7 +15,6 @@ exports.AddCommande = async(req,res)=>{
     res.status(201).json(result.id)
 }
 
-
 // (GET)
 // http://localhost:8000/commande/historique
 exports.AllCommande= async(req, res)=>{
