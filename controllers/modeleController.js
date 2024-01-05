@@ -6,16 +6,12 @@ const db = require('../database/database');
 // http://localhost:8000/modele/add
 // {
 //     "nom": "voituremobile",
-//     "prix":"20000",
-//     "nbr_porte": "5",
+//     "prix": 20000,
+//     "nbr_porte": 5,
 //     "moteur": "essence",
-//     "taille":"2cm",
-//     "nbr_place":5
-// }
-// exports.AddModele = async(req,res)=>{
-//     let modele = req.body
-//     let result = await Modele.create(modele)
-//     res.status(201).json(result.id)
+//     "taille": "2cm",
+//     "nbr_place": 5,
+//     "liste_options": ["1b278310-6aa3-463e-91f4-9f7622dd6302", "b963d77e-6a99-43ad-836f-0406af603167"]
 // }
 
 exports.AddModele = async (req, res) => {
