@@ -4,6 +4,7 @@ const cors = require ('cors')
 const databaseRoute = require('./routes/databaseRoute')
 const modeleRoute = require('./routes/modeleRoute')
 const utilisateurRoute = require('./routes/utilisateurRoute')
+const commandeRoute = require('./routes/utilisateurRoute')
 const app = express()
 
 app.use(express.json())
