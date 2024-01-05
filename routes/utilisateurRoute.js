@@ -1,10 +1,11 @@
 const express = require('express')
 const route = express.Router()
 const utilisateurController = require('../controllers/utilisateurController')
+const middleware = require("../middleware/middleware");
 
-route.post('/add', utilisateurController.AddUtilisateur)
-route.get('/getall', utilisateurController.AllUtilisateur)
-route.get('/getone/:id', utilisateurController.OneUtilisateur)
+route.post('/add',middleware.isAdmin, utilisateurController.AddUtilisateur)
+route.get('/getall',middleware.isAdmin, utilisateurController.AllUtilisateur)
+route.get('/getone/:id',middleware.isAdmin, utilisateurController.OneUtilisateur)
 
 
 route.post('/login/', utilisateurController.login)
