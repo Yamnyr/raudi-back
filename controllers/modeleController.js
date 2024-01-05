@@ -68,6 +68,6 @@ exports.OneModele= async(req, res)=>{
 // http://localhost:8000/modele/getoption/:id
 exports.OptionForModele= async(req, res)=>{
     const modele = await Modele.findByPk(parseInt(req.params.id))
-    let options = await modele.options
+    let options = await modele.getOptions()
     res.status(200).json(options)
 }

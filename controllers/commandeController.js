@@ -16,7 +16,7 @@ exports.AddCommande = async(req,res)=>{
 }
 
 // (GET)
-// http://localhost:8000/commande/historique
+// http://localhost:8000/commande/getall
 exports.AllCommande= async(req, res)=>{
     const commande = await Commande.findAll()
     res.status(200).json(commande)
@@ -24,7 +24,7 @@ exports.AllCommande= async(req, res)=>{
 
 
 // (GET)
-// http://localhost:8000/commande/historique/:id
+// http://localhost:8000/commande/getone/:id
 exports.OneCommande= async(req, res)=>{
     const commande = await Commande.findByPk(parseInt(req.params.id))
     res.status(200).json(commande)

@@ -1,10 +1,11 @@
 const jwt = require('jsonwebtoken')
 const db = require("../database/database");
+const Utilisateur = require('../models/utilisateurModel')
 require('dotenv').config()
 
 exports.authenticator = (req, res, next)=>{
     const token = req.params.token ? req.params.token : req.headers.authorization
-
+    console.log(token)
     if (token && process.env.SECRET_KEY){
         jwt.verify(token, process.env.SECRET_KEY, (err, decoded) =>{
             if(err){
@@ -20,51 +21,54 @@ exports.authenticator = (req, res, next)=>{
     }
 }
 
-exports.isAdmin = (req, res, next) => {
-    const token = req.params.token ? req.params.token : req.headers.authorization;
+exports.isAdmin = async (req, res, next) => {
+    const token = req.params.token || req.headers.authorization;
+    console.log(token);
 
     if (token && process.env.SECRET_KEY) {
-        jwt.verify(token, process.env.SECRET_KEY, async (err, decoded) => {
-            if (err) {
-                res.status(401).json({ erreur: "accès refusé" });
+        try {
+            const decoded = jwt.verify(token, process.env.SECRET_KEY);
+            console.log(decoded);
+
+            const user = await Utilisateur.findOne({
+                where: { email: decoded.email },
+            });
+
+            if (user && user.role === 1) {
+                next();
             } else {
-                console.log(decoded);
-
-                const result = await db.query('SELECT role FROM utilisateur WHERE email = ?', [decoded.email]);
-
-                if (result.length === 1 && result[0].role === 1) {
-                    next();
-                } else {
-                    res.status(403).json({ erreur: "accès denied" });
-                }
+                res.status(403).json({ erreur: "accès denied" });
             }
-        });
+        } catch (err) {
+            res.status(401).json({ erreur: "accès refusé" });
+        }
     } else {
         res.status(401).json({ erreur: "accès refusé" });
     }
 };
 
+exports.iscomptables = async (req, res, next) => {
+    const token = req.params.token || req.headers.authorization;
+    console.log(token);
 
-exports.iscomptables = (req, res, next)=>{
-    const token = req.params.token ? req.params.token : req.headers.authorization
+    if (token && process.env.SECRET_KEY) {
+        try {
+            const decoded = jwt.verify(token, process.env.SECRET_KEY);
+            console.log(decoded);
 
-    if (token && process.env.SECRET_KEY){
-        jwt.verify(token, process.env.SECRET_KEY, async (err, decoded) =>{
-            if(err){
-                res.status(401).json({erreur: "accès refusé"})
+            const user = await Utilisateur.findOne({
+                where: { email: decoded.email },
+            });
+
+            if (user && user.role === 2) {
+                next();
+            } else {
+                res.status(403).json({ erreur: "accès denied" });
             }
-            else{
-                console.log(decoded);
-                const result = await db.query('SELECT role FROM utilisateur WHERE email = ?', [decoded.email]);
-                if (result.left === 1 && result[0].role === 2){
-                    next()
-                }
-                else{
-                    res.status(403).json({erreur: "accès denied"})
-                }
-            }
-        })
-    }   else{
-        res.status(401).json({erreur: "accès refusé"})
+        } catch (err) {
+            res.status(401).json({ erreur: "accès refusé" });
+        }
+    } else {
+        res.status(401).json({ erreur: "accès refusé" });
     }
 };
