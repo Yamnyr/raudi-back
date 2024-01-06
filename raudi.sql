@@ -72,7 +72,7 @@ CREATE TABLE `modele` (
 INSERT INTO `modele` (`id`, `nom`, `prix`, `nbr_porte`, `moteur`, `taille`, `nbr_place`, `img`, `createdAt`, `updatedAt`) VALUES
 (1, 'RaudiR1', 20000, 5, 'essence', 2, 5, './img/RaudiR1.jpg', '2024-01-05 15:18:01', '2024-01-05 15:18:01'),
 (2, 'RaudiR2', 20000, 5, 'essence', 2, 5, './img/RaudiR2.jpg', '2024-01-05 15:18:19', '2024-01-05 15:18:19'),
-(3, 'RaudiR23', 20000, 5, 'essence', 2, 5, './img/RaudiR3.jpg', '2024-01-05 15:22:34', '2024-01-05 15:22:34');
+(3, 'RaudiB7', 20000, 5, 'essence', 2, 5, './img/RaudiB7.jpg', '2024-01-05 15:22:34', '2024-01-05 15:22:34');
 
 -- --------------------------------------------------------
 
