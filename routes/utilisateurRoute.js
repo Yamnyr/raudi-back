@@ -5,7 +5,7 @@ const middleware = require("../middleware/middleware");
 
 route.post('/add',middleware.isAdmin, utilisateurController.AddUtilisateur)
 route.get('/getall',middleware.isAdmin, utilisateurController.AllUtilisateur)
-route.get('/getone/:id',middleware.isAdmin, utilisateurController.OneUtilisateur)
+route.get('/getone/:id',middleware.isAdminOrComptable, utilisateurController.OneUtilisateur)
 
 
 route.post('/login/', utilisateurController.login)

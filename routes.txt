@@ -9,7 +9,7 @@ http://localhost:8000/modele/getoption/:id -> récupère toutes les options du m
 /commande/historique
 -> récupère la liste de toutes les commandes + compte rendu du gain total par mois
 (il y a toutes les infos dans la table commande)
-http://localhost:8000/commande/historique
+http://localhost:8000/commande/getall
 (seul le comptable a accès à cette route)
 
 
@@ -32,7 +32,7 @@ http://localhost:8000/commande/add
 
 /modele/add
 -> créer un nouveau modele
-http://localhost:8000/option/gatall/:id -> récupère toutes les options
+http://localhost:8000/option/getall/:id -> récupère toutes les options
 l'admin peut renseigner toutes les informations relatives au modele
 + il choisit les options parmi les options existantes
 
@@ -79,6 +79,6 @@ l'affiche sur le front
 
 
 /commande/historique
--> affiché montant par mois
+-> il reste à afficher montant par mois
 /commande/new
 /modele/add

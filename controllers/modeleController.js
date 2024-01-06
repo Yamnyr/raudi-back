@@ -71,3 +71,11 @@ exports.OptionForModele= async(req, res)=>{
     let options = await modele.getOptions()
     res.status(200).json(options)
 }
+
+// (GET)
+// http://localhost:8000/modele/getimage/:id
+exports.ImgForModele= async(req, res)=>{
+    const modele = await Modele.findByPk(parseInt(req.params.id))
+    let img = await modele.img
+    res.status(200).json(img)
+}

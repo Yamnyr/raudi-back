@@ -14,7 +14,7 @@ exports.AddOption = async(req,res)=>{
 }
 
 // (GET)
-// http://localhost:8000/option/historique
+// http://localhost:8000/option/
 exports.AllOption= async(req, res)=>{
     const option = await Option.findAll()
     res.status(200).json(option)
@@ -22,7 +22,7 @@ exports.AllOption= async(req, res)=>{
 
 
 // (GET)
-// http://localhost:8000/option/historique/:id
+// http://localhost:8000/option/:id
 exports.OneOption= async(req, res)=>{
     const option = await Option.findByPk(parseInt(req.params.id))
     res.status(200).json(option)
