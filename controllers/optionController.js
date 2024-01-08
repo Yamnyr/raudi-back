@@ -14,7 +14,7 @@ exports.AddOption = async(req,res)=>{
 }
 
 // (GET)
-// http://localhost:8000/option/
+// http://localhost:8000/option/getall
 exports.AllOption= async(req, res)=>{
     const option = await Option.findAll()
     res.status(200).json(option)
